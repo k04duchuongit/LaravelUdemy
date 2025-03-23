@@ -1,10 +1,29 @@
 <?php
 
+use Faker\Core\File;
+use App\Models\Myblog;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\SingleActionController;
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', [HomeController::class, 'index']);
+
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
+
+Route::post('/contact', [ContactController::class, 'contactSubmit'])->name('contact.submit');
+
+Route::get('/file-upload', [FileUploadController::class, 'index'])->name('file.upload');
+
+Route::post('/file-upload', [FileUploadController::class, 'store'])->name('file.store');
+Route::get('/file-download', [FileUploadController::class, 'download'])->name('file.download');
+
+// Route::get('/about', [HomeController::class, 'showAboutPage']);
+// Route::get('/single-action', SingleActionController::class);
+// Route::resource('/blog', BlogController::class);
 // Route::get('/about', function () {
 //     return 'This is page about';
 // })->name('about');       //đặt tên cho router
@@ -26,34 +45,3 @@ use Illuminate\Support\Facades\Route;
 //         return 'This is page blog show';
 //     })->name('show');
 // });
-
-
-
-Route::get('/contact', function () {
-    return view('contact.index');
-});
-
-Route::get('/get-route', function () {
-    return 'This is a GET request';
-});
-
-Route::post('/post-route', function () {
-    return 'This is a POST request';
-});
-
-Route::put('/put-route', function () {
-    return 'This is a PUT request';
-});
-
-Route::patch('/patch-route', function () {
-    return 'This is a PATCH request';
-});
-
-Route::delete('/delete-route', function () {
-    return 'This is a DELETE request';
-});
-
-// Route fallback xử lý khi không tìm thấy route nào phù hợp
-Route::fallback(function () {
-    return "khong co route phu hop";
-});

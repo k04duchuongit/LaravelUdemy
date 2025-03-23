@@ -9,9 +9,16 @@
 </head>
 
 <body>
-    <h2>Contact Page ! </h2>
-    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas nostrum asperiores ab! Harum voluptatibus
-    doloremque iusto ab deleniti sed quaerat, tenetur placeat repellat velit a ex similique corporis accusamus. Eaque!
+    <h2>{{ $title }}</h2>
+    {{ $description }}
+    <ul>
+        @foreach ($books as $book)
+            <li>
+                {{ $book }}
+            </li>
+        @endforeach
+
+    </ul>
 </body>
 
 
