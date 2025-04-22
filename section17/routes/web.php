@@ -64,12 +64,23 @@ Route::get('/hasManyThrough', function () {
     // $state = new State(['name' => 'Thanh Hoa']);
 
     // $country->states()->save($state);  // khi dùng save qua mối quan hệ, nó sẽ lưu vài bảng con và tự luu id của cha nó luôn 
-   
+
     // $state->cities()->createMany([  // giống như trên nhưng mà là nhiều bản ghi
     //     ['name'=> 'Quang xuong'],
     //     ['name'=> 'Sam Son'],
     // ]);
     $country = Country::first();
 
-    return view('through',compact('country'));
+    return view('through', compact('country'));
+});
+
+
+// polymorphic relationships
+Route::get('/image', function () {
+    $post = Post::find(1);
+    // $post->image()->create([     //tự động lưu id đến bảng quan hệ
+    //     'path' => '/upload/post_image.jpg',
+    // ]);
+
+    return $post->image;
 });

@@ -60,6 +60,13 @@ class User extends Authenticatable
     public function Post_OneToMany()
     {
         //has many
-        return $this->hasMany(Post::class);   // laravel sẽ xem đây là câu lệnh join với bảng address qua trường id_users
+        return $this->hasMany(Post::class);   
+    }
+
+    public function image()
+    {
+        //has many
+        return $this->morphOne(Image::class, 'imageable'); // trả về ảnh có id tương ứng 
     }
 }
+
