@@ -19,7 +19,7 @@
                     <a href="{{ route('product.index') }}" class="btn btn-primary">Go back</a>
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('product.create') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="" class="mt-3">Image</label>
